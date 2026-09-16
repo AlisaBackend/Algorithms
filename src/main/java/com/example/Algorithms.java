@@ -1,5 +1,13 @@
 package com.example;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Random;
+
+import com.GreedyAldorithms.FractionalKnapsackProblem;
+import com.GreedyAldorithms.Item;
+import com.GreedyAldorithms.Task1;
+import com.GreedyAldorithms.Task2;
 import com.example.Fibonacci.Fibonacci;
 import com.example.Fibonacci.Memorisation;
 
@@ -20,5 +28,41 @@ public class Algorithms
 
         long result3 = Memorisation.fibEffective(n);
         System.out.println("Memorisation.fibEffective(" + n + ") = " + result3);
+
+        //Task1
+        Random random = new Random();
+        int[] arr = new int[10];
+        arr[0] = random.nextInt(10);
+        arr[1] = random.nextInt(10);
+        arr[2] = random.nextInt(10);
+        arr[3] = random.nextInt(10);
+        arr[4] = random.nextInt(10);
+        arr[5] = random.nextInt(10);
+        arr[6] = random.nextInt(10);
+        arr[7] = random.nextInt(10);
+        arr[8] = random.nextInt(10);
+        arr[9] = random.nextInt(10);
+        //System.out.println(arr[]); //ошибка
+        String strTask1 = Task1.maxNambers(arr);
+        System.out.println(Arrays.toString(arr));
+        System.out.println("strTask1: " + strTask1);
+
+        //Task2
+        int[] stations = {0, 200, 375, 500, 750, 950};
+        int task2 = Task2.minStops(stations, 400);
+        System.out.println("task2.minStops: " + task2); //capacity - это сколько машина может проехать до ближайшей заправки
+
+        //FractionalKnapsackProblem
+        final Item item1 = new Item(4, 20);
+        final Item item2 = new Item(3, 18);
+        final Item item3 = new Item(2, 14);
+        final Item[] items = {item1, item2, item3};
+        // сортировка O(n*logn)
+        Arrays.sort(items, Comparator.comparingDouble(Item::valuePerUnitOfWeight).reversed());
+        System.out.println(Arrays.toString(items));
+        final int W = 7; //вместимость рюкзака
+        double greatItem = FractionalKnapsackProblem.greatElements(Item[] items, int W)
+
+
     }
 }

@@ -25,4 +25,5 @@ public class FractionalKnapsackProblem {
         }
         System.out.println("Ценность наилучшего набора: ");
         return valueSoFar;
+    }
 }

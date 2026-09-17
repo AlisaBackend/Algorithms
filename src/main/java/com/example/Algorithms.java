@@ -16,7 +16,7 @@ public class Algorithms
     public static void main( String[] args )
     {
 
-        int n = 40;
+        int n = 8;
 
         // Вызов метода из класса Fibonacci
         long result1 = Fibonacci.fibEffective(n);
@@ -42,7 +42,7 @@ public class Algorithms
         arr[7] = random.nextInt(10);
         arr[8] = random.nextInt(10);
         arr[9] = random.nextInt(10);
-        //System.out.println(arr[]); //ошибка
+        System.out.println(Arrays.toString(arr)); 
         String strTask1 = Task1.maxNambers(arr);
         System.out.println(Arrays.toString(arr));
         System.out.println("strTask1: " + strTask1);
@@ -61,8 +61,7 @@ public class Algorithms
         Arrays.sort(items, Comparator.comparingDouble(Item::valuePerUnitOfWeight).reversed());
         System.out.println(Arrays.toString(items));
         final int W = 7; //вместимость рюкзака
-        double greatItem = FractionalKnapsackProblem.greatElements(Item[] items, int W)
-
-
+        FractionalKnapsackProblem knapsack = new FractionalKnapsackProblem();
+        double greatItem = knapsack.greatElements(items, W);
     }
 }

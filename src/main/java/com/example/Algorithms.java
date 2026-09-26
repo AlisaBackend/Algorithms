@@ -12,6 +12,7 @@ import com.example.Fibonacci.Fibonacci;
 import com.example.Fibonacci.Memorisation;
 import com.example.LeetCode.ArraysAndHashing.GroupAnagrams;
 import com.example.LeetCode.ArraysAndHashing.TopKFrequentElements;
+import com.example.LeetCode.TwoPointers.MoveZeroes;
 
 
 public class Algorithms
@@ -79,7 +80,21 @@ public class Algorithms
         // int[] sol = TopKFrequentElements.topKFrequent(nums, k);
         // System.out.println("TopKFrequentElements " + sol);
 
+        //MoveZeroes
+        MoveZeroes move = new MoveZeroes();
+        int[] nums1 = {0, 1, 0, 3, 12};
+        move.moveZeroes(nums1);
+        System.out.println(Arrays.toString(nums1)); // [1, 3, 12, 0, 0]
+        
+        int[] nums2 = {0};
+        move.moveZeroes(nums2);
+        System.out.println(Arrays.toString(nums2)); // [0]
+        
+        int[] nums3 = {1, 2, 3};
+        move.moveZeroes(nums3);
+        System.out.println(Arrays.toString(nums3)); // [1, 2, 3]
 
+        
 
     }
 }

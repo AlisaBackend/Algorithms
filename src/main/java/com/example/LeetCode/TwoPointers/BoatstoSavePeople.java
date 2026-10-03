@@ -1,5 +1,7 @@
 package com.example.LeetCode.TwoPointers;
 
+import java.util.Arrays;
+
 public class BoatstoSavePeople {
     
     public int numRescueBoats(int[] people, int limit) {

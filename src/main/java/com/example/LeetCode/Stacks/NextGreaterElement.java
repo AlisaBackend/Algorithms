@@ -3,33 +3,26 @@ package com.example.LeetCode.Stacks;
 import java.util.*;
 
 public class NextGreaterElement {
-
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        // 1. Строим карту: элемент -> его следующий больший справа
+        // nextGreater[x] = первый элемент справа от x в nums2, который больше x
         Map<Integer, Integer> nextGreater = new HashMap<>();
-        Deque<Integer> stack = new ArrayDeque<>(); // монотонный стек
+        Deque<Integer> stack = new ArrayDeque<>(); // монотонно убывающий стек
 
-        for (int i = nums2.length - 1; i >= 0; i--) {
-            int num = nums2[i];
-
-            // Убираем всё, что меньше или равно текущему — они не могут быть "следующим большим"
-            while (!stack.isEmpty() && stack.peek() <= num) {
-                stack.pop();
+        for (int x : nums2) {
+            while (!stack.isEmpty() && stack.peek() < x) {
+                nextGreater.put(stack.pop(), x);
             }
-
-            // Если стек не пуст — вершина и есть следующий больший
-            nextGreater.put(num, stack.isEmpty() ? -1 : stack.peek());
-
-            // Текущий элемент становится кандидатом для элементов слева
-            stack.push(num);
+            stack.push(x);
+        }
+        // элементы, оставшиеся в стеке, не имеют большего справа -> -1
+        while (!stack.isEmpty()) {
+            nextGreater.put(stack.pop(), -1);
         }
 
-        // 2. Заполняем ответ для nums1
-        int[] result = new int[nums1.length];
+        int[] ans = new int[nums1.length];
         for (int i = 0; i < nums1.length; i++) {
-            result[i] = nextGreater.get(nums1[i]);
+            ans[i] = nextGreater.get(nums1[i]);
         }
-
-        return result;
+        return ans;
     }
 }
